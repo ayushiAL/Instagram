@@ -8,6 +8,9 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController emailControlller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,47 +18,76 @@ class _SearchScreenState extends State<SearchScreen> {
         backgroundColor: Colors.black,
         body: Container(
             child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+              scrollDirection: Axis.vertical,
           child: Column(
             children: [
               Container(
-                  // width: double.infinity,
-                  child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-                    height: 35,
-                    width: 350,
-                    //width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.white12,
-                        borderRadius: BorderRadius.circular(10)),
-                    // child: Icon(Icons.search_rounded),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 15),
-                          // padding: EdgeInsets.all(1),
-                          height: 20,
-                          width: 20,
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.white,
-                          ),
+                height: 40,
+                margin: EdgeInsets.only(left: 10,right: 10),
+                // width: double.infinity,
+                //     child: Row(
+                //   children: [
+                //     // Container(
+                //     //   margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                //     //   height: 35,
+                //     //   width: 350,
+                //     //   //width: double.infinity,
+                //     //   decoration: BoxDecoration(
+                //     //       color: Colors.white12,
+                //     //       borderRadius: BorderRadius.circular(10)),
+                //     //   // child: Icon(Icons.search_rounded),
+                //     //   child: Row(
+                //     //     mainAxisAlignment: MainAxisAlignment.start,
+                //     //     children: [
+                //     //       Container(
+                //     //         margin: EdgeInsets.only(left: 15),
+                //     //         // padding: EdgeInsets.all(1),
+                //     //         height: 20,
+                //     //         width: 20,
+                //     //         child: Icon(
+                //     //           Icons.search,
+                //     //           color: Colors.white,
+                //     //         ),
+                //     //       ),
+                //     //       Container(
+                //     //           margin: EdgeInsets.only(left: 15),
+                //     //           child: Text(
+                //     //             'Search',
+                //     //             style: TextStyle(
+                //     //                 color: Colors.white54, fontSize: 16),
+                //     //           ))
+                //     //     ],
+                //     //   ),
+                //     // ),
+                //   ],
+                // )
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Form(
+                    key: formKey,
+                    child: TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        focusedBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 5,bottom: 8),
+                          hintText: 'Search',
+                        hintStyle: TextStyle(
+                          color: Colors.white54,
                         ),
-                        Container(
-                            margin: EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Search',
-                              style: TextStyle(
-                                  color: Colors.white54, fontSize: 16),
-                            ))
-                      ],
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                        fillColor: Colors.white12,
+                        filled: true,
+                        // isDense: false,
+                      ),
                     ),
                   ),
-                ],
-              )),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.only(top: 8, left: 1),
                 child: Column(

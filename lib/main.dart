@@ -5,14 +5,18 @@ import 'package:project/home_screen.dart';
 import 'package:project/notification_screen.dart';
 import 'package:project/profile_screen.dart';
 import 'package:project/reels_screen.dart';
+import 'package:project/splash_screen.dart';
+
 //import 'package:flutter/services.dart';
 void main() {
-  runApp(MaterialApp(
-    home: Insta(),
-    debugShowCheckedModeBanner: false,
-  ),
+  runApp(
+    MaterialApp(
+      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+    ),
   );
 }
+
 class Insta extends StatefulWidget {
   const Insta({Key? key}) : super(key: key);
 
@@ -21,14 +25,15 @@ class Insta extends StatefulWidget {
 }
 
 class _InstaState extends State<Insta> {
-  List<Widget> pageList =[
+  List<Widget> pageList = [
     HomeScreen(),
     SearchScreen(),
     ReelsScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];
-  int CurrentIndex=0;
+  int CurrentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,31 +42,38 @@ class _InstaState extends State<Insta> {
         child: Column(
           children: [
             Expanded(
-                child: pageList[CurrentIndex],
+              child: pageList[CurrentIndex],
             ),
+            MediaQuery.of(context).viewInsets.bottom <=0 ?
             Container(
-              height: 47,
+              height: 50,
               color: Colors.black,
               // width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
-                    onTap: (){
-                      setState((){
-                        CurrentIndex=0;
+                    onTap: () {
+                      setState(() {
+                        CurrentIndex = 0;
                       });
                     },
-                    child: Icon(
-                      Icons.home,
-                      color: Colors.white,
-                      size: 32,
-                    ),
+                    child: CurrentIndex == 0
+                        ? Icon(
+                            Icons.home,
+                            color: Colors.white,
+                            size: 32,
+                          )
+                        : Icon(
+                            Icons.home_outlined,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                   ),
                   InkWell(
-                    onTap: (){
-                      setState((){
-                        CurrentIndex=1;
+                    onTap: () {
+                      setState(() {
+                        CurrentIndex = 1;
                       });
                     },
                     child: Icon(
@@ -71,42 +83,60 @@ class _InstaState extends State<Insta> {
                     ),
                   ),
                   InkWell(
-                    onTap: (){
-                      setState((){
-                        CurrentIndex=2;
+                    onTap: () {
+                      setState(() {
+                        CurrentIndex = 2;
                       });
                     },
                     child: Container(
-                      height: 40,
-                      width: 40,
-                      child: Image.network('https://image.shutterstock.com/image-vector/popular-social-media-reels-multiclip-260nw-1790683118.jpg')
-
-                      ),
-                    ),
-                    // Icon(
-                    //   Icons.home_outlined,
-                    //   color: Colors.white,
-                    //   size: 32,
-                    // ),
+                        height: 40,
+                        width: 40,
+                        child: Image.network(
+                            'https://image.shutterstock.com/image-vector/popular-social-media-reels-multiclip-260nw-1790683118.jpg')),
+                  ),
+                  // Icon(
+                  //   Icons.home_outlined,
+                  //   color: Colors.white,
+                  //   size: 32,
+                  // ),
                   InkWell(
-                    onTap: (){
-                      setState((){
-                        CurrentIndex=3;
+                    onTap: () {
+                      setState(() {
+                        CurrentIndex = 3;
                       });
                     },
-                    child: Icon(
-                      Icons.favorite_outline_sharp,
-                      color: Colors.white,
-                      size: 32,
-                    ),
+                    child: CurrentIndex == 3
+                        ? Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                            size: 32,
+                          )
+                        : Icon(
+                            Icons.favorite_outline_sharp,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                   ),
                   InkWell(
-                    onTap: (){
-                      setState((){
-                        CurrentIndex=4;
+                    onTap: () {
+                      setState(() {
+                        CurrentIndex = 4;
                       });
                     },
-                    child: Container(
+                    child:CurrentIndex== 4? Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              "assets/image/nature1.jpg",
+                            ),
+                            fit: BoxFit.cover),
+                        shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white,width: 2)
+                      ),
+                      height: 30,
+                      width: 30,
+                    ):
+                    Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
@@ -117,11 +147,11 @@ class _InstaState extends State<Insta> {
                       ),
                       height: 30,
                       width: 30,
-                    ),
+                    )
                   ),
                 ],
               ),
-            ),
+            ):Container(),
           ],
         ),
       ),

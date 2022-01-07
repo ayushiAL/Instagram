@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:project/menuscreen.dart';
+import 'package:project/profile_followers.dart';
 import 'package:project/profilepage.dart';
 import 'package:project/tagpage.dart';
 
@@ -13,11 +14,11 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  int CurrentIndex=0;
+  int CurrentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return SafeArea(child: Scaffold(
       backgroundColor: Colors.black,
       body: Container(
         child: SingleChildScrollView(
@@ -68,17 +69,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Container(
                             child: InkWell(
-                              child: Icon(
-                                Icons.menu,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              onTap: (){
-                                showModalBottomSheet(context: context, builder: (BuildContext context){
-                                  return MenuScreen();
-                                });
-                              }
-                            ),
+                                child: Icon(
+                                  Icons.menu,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return MenuScreen();
+                                      });
+                                }),
                             margin: EdgeInsets.only(left: 20, right: 20),
                           )
                         ],
@@ -105,8 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               fit: BoxFit.cover),
                           shape: BoxShape.circle,
-                        )
-                    ),
+                        )),
                     Container(
                       margin: EdgeInsets.only(top: 20, left: 20),
                       // color: Colors.white,
@@ -141,62 +142,82 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               )
                             ],
                           ),
-                          Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 15, bottom: 4),
-                                  alignment: Alignment.center,
-                                  // color:Colors.pink,
-                                  child: Text(
-                                    '222',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                Container(
-                                  // margin: EdgeInsets.only(top: 20),
-                                  alignment: Alignment.center,
-                                  // color:Colors.pink,
-                                  child: Text(
-                                    'Followers',
-                                    style: TextStyle(
-                                      color: Colors.white,
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FollowersScreen (index: 0)));
+                            },
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: 15, bottom: 4),
+                                    alignment: Alignment.center,
+                                    // color:Colors.pink,
+                                    child: Text(
+                                      '222',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 18),
                                     ),
                                   ),
-                                )
-                              ],
+                                  Container(
+                                    // margin: EdgeInsets.only(top: 20),
+                                    alignment: Alignment.center,
+                                    // color:Colors.pink,
+                                    child: Text(
+                                      'Followers',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                          Container(
-                            child: Column(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 15, bottom: 4),
-                                  alignment: Alignment.center,
-                                  // color:Colors.pink,
-                                  child: Text(
-                                    '222',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18),
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FollowersScreen(
+                                        index : 1
+                                      ),
                                   ),
-                                ),
-                                Container(
-                                  // margin: EdgeInsets.only(top: 20),
-                                  alignment: Alignment.center,
-                                  // color:Colors.pink,
-                                  child: Text(
-                                    'Following',
-                                    style: TextStyle(
-                                      color: Colors.white,
+                              );
+                            },
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: 15, bottom: 4),
+                                    alignment: Alignment.center,
+                                    // color:Colors.pink,
+                                    child: Text(
+                                      '222',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 18),
                                     ),
                                   ),
-                                )
-                              ],
+                                  Container(
+                                    // margin: EdgeInsets.only(top: 20),
+                                    alignment: Alignment.center,
+                                    // color:Colors.pink,
+                                    child: Text(
+                                      'Following',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -211,7 +232,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Container(
                       child: Text(
-                        ''
                         'AYUSHI LIMBASIYA',
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w700),
@@ -310,8 +330,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               margin: EdgeInsets.only(top: 7, left: 5),
                               child: Text(
                                 "Highlights",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
                               ),
                             ),
                           ],
@@ -349,8 +369,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               margin: EdgeInsets.only(top: 4),
                               child: Text(
                                 "Highlights",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
                               ),
                             ),
                           ],
@@ -388,8 +408,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               margin: EdgeInsets.only(top: 4),
                               child: Text(
                                 "Highlights",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
                               ),
                             ),
                           ],
@@ -426,8 +446,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               margin: EdgeInsets.only(top: 4),
                               child: Text(
                                 "Highlights",
-                                style:
-                                    TextStyle(color: Colors.white, fontSize: 12),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
                               ),
                             ),
                           ],
@@ -436,7 +456,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         margin: EdgeInsets.only(left: 5, right: 5),
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
                   height: 104,
                   width: double.infinity,
@@ -457,32 +477,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                          CurrentIndex=0;
-                        });
-              },
-                      child: Icon(
-                        Icons.border_all_rounded,
-                        color: Colors.white,
-                        size: 27,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          CurrentIndex=1;
+                          CurrentIndex = 0;
                         });
                       },
-                      child: Icon(
-                        Icons.assignment_ind_outlined,
-                        color: Colors.white70,
-                        size: 27,
-                      ),
+                      child: CurrentIndex == 0
+                          ? Icon(
+                              Icons.border_all_rounded,
+                              color: Colors.white,
+                              size: 27,
+                            )
+                          : Icon(
+                              Icons.border_all_rounded,
+                              color: Colors.white70,
+                              size: 27,
+                            ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          CurrentIndex = 1;
+                        });
+                      },
+                      child: CurrentIndex == 1
+                          ? Icon(
+                                Icons.assignment_ind_outlined,
+                                color: Colors.white,
+                                size: 27,
+                              )
+                          : Icon(
+                              Icons.assignment_ind_outlined,
+                              color: Colors.white70,
+                              size: 27,
+                            ),
                     )
                   ],
                 ),
-                ),
+              ),
               CurrentIndex == 0 ? PPage() : TagProfile()
             ],
           ),
