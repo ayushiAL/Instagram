@@ -23,7 +23,8 @@ class _MenuScreenState extends State<MenuScreen> {
           height: 380,
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft:  Radius.circular(30),topRight: Radius.circular(30)),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             color: Colors.white12,
           ),
           child: Column(

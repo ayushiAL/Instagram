@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:project/menuscreen.dart';
 import 'package:project/profile_followers.dart';
+import 'package:project/profile_screen/edit_profile.dart';
 import 'package:project/profilepage.dart';
 import 'package:project/tagpage.dart';
 
@@ -243,20 +244,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 child: Row(
                   children: [
-                    Container(
-                      height: 30,
-                      width: 330,
-                      margin: EdgeInsets.only(top: 15, left: 15),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white38),
-                        borderRadius: BorderRadius.circular(5),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile()));
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 330,
+                        margin: EdgeInsets.only(top: 15, left: 15),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white38),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w700),
+                        ),
                       ),
-                      child: Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w700),
-                      ),
+
                     ),
                     Container(
                         height: 30,
